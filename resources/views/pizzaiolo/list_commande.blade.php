@@ -20,17 +20,17 @@
                     <td>{{ $commande->statut }}</td>
                     <td>{{ $commande->prix_total }}</td>
                     <td>{{ $commande->updated_at }}</td>
-                    <td><a href="{{route('detail_commandes',['id'=> $commande->id])}}"> Regarder</a> </td>
+                    <td><a href="{{ route('detail_commandes', ['id' => $commande->id]) }}"> Regarder</a> </td>
                     <td>
-                        <form action="/action_page.php">
-                            <label for="cars">Choisir un statut:</label>
-                            <select name="cars" id="cars">
-                              <option value="volvo">traitement</option>
-                              <option value="saab">pret</option>
-                              <option value="opel">recupere</option>
+                        <form action="{{ route('statut', ['id' => $commande->id]) }}">
+                            <label for="statut">Choisir un statut:</label>
+                            <select name="statut">
+                                <option value="traitement">traitement</option>
+                                <option value="pret">pret</option>
+                                <option value="recupere">recupere</option>
                             </select>
                             <input type="submit" value="Save">
-                          </form>
+                        </form>
                     </td>
                 </tr>
             @endforeach

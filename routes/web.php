@@ -98,3 +98,8 @@ Route::get('/commandes/pizzaiolo', [PizzaioloController::class, 'listCommande'])
 // Le detail du commande
 Route::get('/commandes/{id}/detail', [PizzaioloController::class, 'detailCommande'])
     ->name('detail_commandes');
+
+// Changer le statut
+
+Route::get('/statut/{id}/change',[PizzaioloController::class,'changeStatut'])
+    ->name('statut');
