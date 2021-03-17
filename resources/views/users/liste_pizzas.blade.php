@@ -3,14 +3,16 @@
 @section('title', 'Liste des pizzas')
 
 @section('contents')
-<p style="color: yellowgreen; font-size: 30px">  Salut  <strong>{{ Auth::user()->login }}</strong> - Votre ID is : {{ Auth::id() }} </p>
+    <p style="color: yellowgreen; font-size: 30px">
+        Salut <strong>{{ Auth::user()->login }}</strong>
+        - Votre ID is : {{ Auth::id() }}
+    </p>
 
     <h1>MENU</h1>
     <h2><a href="{{ route('change_password') }}"> Changer votre mot de passe</a></h2>
-
+    <h2><a href="{{ route('redirect_card') }}">Panier</a></h2>
+    <h2><a href="{{ route('liste_commandes', ['id' => Auth::id()]) }}">Vos Commandes </a></h2>
     @unless(empty($pizzas))
-        <h2><a href="{{ route('redirect_card') }}">Panier</a></h2>
-        <h2>Vos Commandes</h2>
         <table>
             <tr>
                 <th>NOM</th>

@@ -152,4 +152,17 @@ class UserController extends Controller
         $request->session()->forget('prixTOTAL');
         return redirect()->action([UserController::class, 'listPizzas']);
     }
+
+    public function listOrder($userId)
+    {
+        $commandes = Commande::query()->select()->where('user_id', $userId)->get();
+        return view('users.liste_commandes', ['commandes' => $commandes]);
+    }
+
+    public function detailOrder($id)
+    {
+        $prix = Commande::query()->select('prix_total')->where('id', $id)->get();
+        $pizzas = Commande::find($id)->pizzas;
+        return view('users.detail_commandes', ['prix' => $prix, 'pizzas' => $pizzas]);
+    }
 }

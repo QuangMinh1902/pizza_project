@@ -100,8 +100,13 @@ Route::get('/commandes/{id}/detail', [PizzaioloController::class, 'detailCommand
     ->name('detail_commandes');
 
 // Changer le statut
-Route::get('/statut/{id}/change',[PizzaioloController::class,'changeStatut'])
+Route::get('/statut/{id}/change', [PizzaioloController::class, 'changeStatut'])
     ->name('statut');
 
-// Voir le détail de la commande (pizzas et prix total)
-Route::get('/user/');
+// le détail de la commande (pizzas et prix total)
+Route::get('/user/{id}/commandes', [UserController::class, 'listOrder'])
+    ->name('liste_commandes');
+
+// liste pizzas et prix total de la commande
+Route::get('/detail/{id}/commande',[UserController::class,'detailOrder'])
+    ->name('user_commande');
