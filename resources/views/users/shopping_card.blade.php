@@ -28,11 +28,9 @@
                 </tr>
             @endforeach
         </table>
-        @if (Session::has('prixTOTAL') > 0)
-            <h3>
-                Le Prix Total : {{ Session::get('prixTOTAL') }} $
-            </h3>
-        @endif
+        <h3>
+            Le Prix Total : {{ Session::get('prixTOTAL') }} $
+        </h3>
 
         @if (Session::has('ListId'))
             <h3>

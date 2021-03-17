@@ -29,9 +29,6 @@ class AuthenticatedSessionController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            $request->session()->flash('etat', 'login successfully');
-
             if (Auth::user()->type === 'admin') {
                 return redirect()->intended('pizzas');
             } else if (Auth::user()->type === 'user') {
