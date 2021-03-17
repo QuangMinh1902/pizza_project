@@ -8,6 +8,7 @@
 
     @unless(empty($pizzas))
         <h2><a href="{{ route('redirect_card') }}">Panier</a></h2>
+        <h2>Vos Commandes</h2>
         <table>
             <tr>
                 <th>NOM</th>

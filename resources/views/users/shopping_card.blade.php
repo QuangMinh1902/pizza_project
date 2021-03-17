@@ -30,19 +30,22 @@
         @if ($loop->last)
             </table>
         @endif
+
+        <h3>
+            Le Prix Total : {{ Session::get('prixTOTAL') }} $
+        </h3>
+
     @empty
-        <p>vous n'avez rien dans le panier </p>
+        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez rien dans le panier </p>
     @endforelse
 
-    <h3>
-        Le Prix Total : {{ Session::get('prixTOTAL') }} $
-    </h3>
 
     @if (Session::has('ListId'))
         <h3>
             <a href="{{ route('confirm_order') }}">Acheter </a>
         </h3>
     @endif
+
     <a href="{{ route('back_list') }}">Back to Menu</a>
-    
+
 @endsection
