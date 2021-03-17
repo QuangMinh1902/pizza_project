@@ -57,7 +57,7 @@
 
     @auth
         <a href="{{ route('logout') }}">Déconnexion</a>
-        <p style="color: yellowgreen; font-size: 30px">Salut {{ Auth::user()->login }} - Votre ID is : {{ Auth::id() }} </p>
+        <p style="color: yellowgreen; font-size: 30px">  Salut  <strong>{{ Auth::user()->login }}</strong> - Votre ID is : {{ Auth::id() }} </p>
     @endauth
 
     @section('etat')
