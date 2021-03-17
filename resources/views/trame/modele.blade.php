@@ -54,7 +54,6 @@
 </head>
 
 <body>
-
     @auth
         <a href="{{ route('logout') }}">Déconnexion</a>
     @endauth

@@ -8,12 +8,13 @@
 
     @forelse ($commandes as $commande)
         @if ($loop->first)
-            <table>
+            <table style="margin: auto">
                 <tr>
                     <th>ID</th>
                     <th>STATUT</th>
                     <th>CREATED_AT</th>
                     <th>Liste des pizzas</th>
+                    <th>PRIX_TOTAL</th>
                 </tr>
         @endif
 
@@ -24,6 +25,7 @@
             <td style="text-align: center">
                 <a href="{{ route('user_commande', ['id' => $commande->id]) }}">Regarder </a>
             </td>
+            <td> {{ $commande->prix_total }}</td>
         </tr>
 
         @if ($loop->last)
