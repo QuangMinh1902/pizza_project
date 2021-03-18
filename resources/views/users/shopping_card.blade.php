@@ -29,12 +29,10 @@
         </tr>
         @if ($loop->last)
             </table>
+            <h3>
+                Le Prix Total : {{ Session::get('prixTOTAL') }} $
+            </h3>
         @endif
-
-        <h3>
-            Le Prix Total : {{ Session::get('prixTOTAL') }} $
-        </h3>
-
     @empty
         <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez rien dans le panier </p>
     @endforelse

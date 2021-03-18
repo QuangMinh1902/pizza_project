@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commande;
+use App\Models\CommandePizza;
 use Illuminate\Http\Request;
 use App\Models\Pizza;
 use App\Models\User;
@@ -145,6 +146,9 @@ class UserController extends Controller
         $commande->pizzas()->attach($pizza);
         $list = $request->session()->get('ListNom');
         foreach ($list as $cle => $valeur) {
+            CommandePizza::query()
+                ->where('commande_id', $commande->id)
+                ->update(['quantity_pizza' => $request->session()->get($valeur)['pizza_qty']]);
             $request->session()->forget($valeur);
         }
         $request->session()->forget('ListId');
