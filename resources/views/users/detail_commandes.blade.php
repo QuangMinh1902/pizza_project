@@ -11,13 +11,14 @@
                 <tr>
                     <th>Nom de pizza</th>
                     <th>PRIX</th>
-                    <th>DESCRIPTION</th>
+                    <th>QUANTITY</th>
                 </tr>
         @endif
         <tr>
             <td>{{ $pizza->nom }}</td>
             <td>{{ $pizza->prix }}</td>
-            <td>{{ $pizza->description }}</td>
+            <td>{{ \App\Models\CommandePizza::where(['commande_id' => $commande_id, 'pizza_id' => $pizza->id])->first()->quantity_pizza }}
+            </td>
         </tr>
 
         @if ($loop->last)

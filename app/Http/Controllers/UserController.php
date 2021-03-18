@@ -148,6 +148,7 @@ class UserController extends Controller
         foreach ($list as $cle => $valeur) {
             CommandePizza::query()
                 ->where('commande_id', $commande->id)
+                ->where('pizza_id', $request->session()->get($valeur)['pizza_id'])
                 ->update(['quantity_pizza' => $request->session()->get($valeur)['pizza_qty']]);
             $request->session()->forget($valeur);
         }
@@ -169,7 +170,12 @@ class UserController extends Controller
         $commande = Commande::find($id);
         return view(
             'users.detail_commandes',
-            ['pizzas' => $pizzas, 'prix' => $commande->prix_total, 'statut' => $commande->statut]
+            [
+                'pizzas' => $pizzas,
+                'prix' => $commande->prix_total,
+                'statut' => $commande->statut,
+                'commande_id' => $id
+            ]
         );
     }
 
