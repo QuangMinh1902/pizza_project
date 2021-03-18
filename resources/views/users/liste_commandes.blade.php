@@ -4,28 +4,24 @@
 
 @section('contents')
 
-    <h1>Détail des commandes</h1>
+    <h1> Liste de vos commandes</h1>
 
     @forelse ($commandes as $commande)
         @if ($loop->first)
             <table style="margin: auto">
                 <tr>
                     <th>ID</th>
-                    <th>STATUT</th>
                     <th>CREATED_AT</th>
-                    <th>Liste des pizzas</th>
-                    <th>PRIX_TOTAL</th>
+                    <th>DETAIL</th>
                 </tr>
         @endif
 
         <tr>
-            <td>{{ $commande->id }}</td>
-            <td>{{ $commande->statut }}</td>
+            <td style="font-weight: bold">{{ $commande->id }}</td>
             <td>{{ $commande->created_at }}</td>
             <td style="text-align: center">
                 <a href="{{ route('user_commande', ['id' => $commande->id]) }}">Regarder </a>
             </td>
-            <td> {{ $commande->prix_total }}</td>
         </tr>
 
         @if ($loop->last)
@@ -35,6 +31,8 @@
     @empty
         <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez aucun commande </p>
     @endforelse
+    <h2>Les commandes non-récupérées</h2>
+
     <a href="{{ route('back_list') }}">Back to Menu</a>
 
 @endsection

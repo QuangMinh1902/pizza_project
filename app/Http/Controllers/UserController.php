@@ -162,6 +162,12 @@ class UserController extends Controller
     public function detailOrder($id)
     {
         $pizzas = Commande::find($id)->pizzas;
-        return view('users.detail_commandes', ['pizzas' => $pizzas]);
+        $commande = Commande::find($id);
+        return view(
+            'users.detail_commandes',
+            ['pizzas' => $pizzas, 'prix' => $commande->prix_total, 'statut' => $commande->statut]
+        );
     }
+
+    // public function
 }
