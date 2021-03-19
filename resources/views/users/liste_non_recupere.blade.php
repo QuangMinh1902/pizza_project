@@ -4,7 +4,7 @@
 
 @section('contents')
 
-    <h1> Liste de vos commandes</h1>
+    <h1> Liste de vos commandes non-récupérées</h1>
 
     @forelse ($commandes as $commande)
         @if ($loop->first)
@@ -31,8 +31,5 @@
     @empty
         <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez aucun commande </p>
     @endforelse
-    <h2><a href="{{ route('commandes_nonRecuperees', ['id' => Auth::id()]) }}">Les commandes non-récupérées</a></h2>
-
-    <a href="{{ route('back_list') }}">Back to Menu</a>
 
 @endsection

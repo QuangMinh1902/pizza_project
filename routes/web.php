@@ -103,10 +103,14 @@ Route::get('/commandes/{id}/detail', [PizzaioloController::class, 'detailCommand
 Route::get('/statut/{id}/change', [PizzaioloController::class, 'changeStatut'])
     ->name('statut');
 
-// le détail de la commande (pizzas et prix total)
+// liste commandes du user avec {id}
 Route::get('/user/{id}/commandes', [UserController::class, 'listOrder'])
     ->name('liste_commandes');
 
-// liste pizzas et prix total de la commande
-Route::get('/detail/{id}/commande',[UserController::class,'detailOrder'])
+// le detail concret du commande
+Route::get('/detail/{id}/commande', [UserController::class, 'detailOrder'])
     ->name('user_commande');
+
+// Liste commandes non-récupérées
+Route::get('/user/{id}/commandes-non-recuperees', [UserController::class, 'listNotRetrieved'])
+    ->name('commandes_nonRecuperees');

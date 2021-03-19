@@ -179,5 +179,12 @@ class UserController extends Controller
         );
     }
 
-    // public function
+    public function listNotRetrieved($userId)
+    {
+        $commandes = Commande::query()->select()
+            ->where('user_id', $userId)
+            ->whereIn('statut', ['envoye', 'traitement', 'pret'])
+            ->get();
+        return view('users.liste_non_recupere', ['commandes' => $commandes]);
+    }
 }
