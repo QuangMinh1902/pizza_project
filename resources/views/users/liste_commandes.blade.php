@@ -20,7 +20,9 @@
             <td style="font-weight: bold">{{ $commande->id }}</td>
             <td>{{ $commande->created_at }}</td>
             <td style="text-align: center">
-                <a href="{{ route('user_commande', ['id' => $commande->id]) }}">Regarder </a>
+                <a class="bouncy"  style="background-color:#228B22"
+                href="{{ route('user_commande', ['id' => $commande->id]) }}">Regarder
+                </a>
             </td>
         </tr>
 

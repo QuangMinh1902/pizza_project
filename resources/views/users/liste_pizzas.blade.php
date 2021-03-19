@@ -28,7 +28,7 @@
                     @if (Session::has($pizza->nom))
                         <td style="color: red"> <strong>AJOUTÉ</strong> </td>
                     @else
-                        <td><a
+                        <td><a class="bouncy" style="background-color:#800000"
                                 href="{{ route('add_card', ['nom' => $pizza->nom, 'id' => $pizza->id, 'prix' => $pizza->prix]) }}">
                                 AJOUTER
                             </a></td>
