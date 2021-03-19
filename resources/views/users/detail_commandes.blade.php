@@ -17,7 +17,7 @@
         <tr>
             <td>{{ $pizza->nom }}</td>
             <td>{{ $pizza->prix }}</td>
-            <td>{{ \App\Models\CommandePizza::where(['commande_id' => $commande_id, 'pizza_id' => $pizza->id])->first()->quantity_pizza }}
+            <td>{{ \App\Models\CommandePizza::where(['commande_id' => $commande_id, 'pizza_id' => $pizza->id])->first()->qte }}
             </td>
         </tr>
 
@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <td colspan="3" style="text-align: center;color: #228b22">
-                    <strong>Prix total : {{ $prix }} $ </strong>
+                    <strong>Prix total : {{ $prixTotal }} $ </strong>
                 </td>
             </tr>
             </table>

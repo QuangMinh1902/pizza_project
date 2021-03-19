@@ -112,5 +112,5 @@ Route::get('/detail/{id}/commande', [UserController::class, 'detailOrder'])
     ->name('user_commande');
 
 // Liste commandes non-récupérées
-Route::get('/user/{id}/commandes-non-recuperees', [UserController::class, 'listNotRetrieved'])
+Route::get('/user/commandes-non-recuperees', [UserController::class, 'listNotRetrieved'])
     ->name('commandes_nonRecuperees');

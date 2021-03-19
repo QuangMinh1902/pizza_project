@@ -141,7 +141,6 @@ class UserController extends Controller
         $commande = new Commande();
         $commande->user_id = Auth::id();
         $commande->statut = 'envoye';
-        $commande->prix_total = $request->session()->get('prixTOTAL');
         $commande->save();
         $commande->pizzas()->attach($pizza);
         $list = $request->session()->get('ListNom');
@@ -149,7 +148,7 @@ class UserController extends Controller
             CommandePizza::query()
                 ->where('commande_id', $commande->id)
                 ->where('pizza_id', $request->session()->get($valeur)['pizza_id'])
-                ->update(['quantity_pizza' => $request->session()->get($valeur)['pizza_qty']]);
+                ->update(['qte' => $request->session()->get($valeur)['pizza_qty']]);
             $request->session()->forget($valeur);
         }
         $request->session()->forget('ListId');
@@ -164,25 +163,36 @@ class UserController extends Controller
         return view('users.liste_commandes', ['commandes' => $commandes]);
     }
 
-    public function detailOrder($id)
+    public function detailOrder(Request $request, $id)
     {
         $pizzas = Commande::find($id)->pizzas;
         $commande = Commande::find($id);
+        $commandePizza = CommandePizza::query()
+            ->select('pizza_id', 'qte')
+            ->where('commande_id', $id)
+            ->get();
+        $request->session()->put('prixToTal', 0);
+        foreach ($commandePizza as $c) {
+            $prix = Pizza::where(['id' => $c->pizza_id])->first()->prix;
+            $request->session()->increment('prixToTal', $prix * $c->qte);
+        }
+        $prixTotal = $request->session()->get('prixToTal');
+        $request->session()->forget('prixToTal');
         return view(
             'users.detail_commandes',
             [
                 'pizzas' => $pizzas,
-                'prix' => $commande->prix_total,
+                'prixTotal' => $prixTotal,
                 'statut' => $commande->statut,
                 'commande_id' => $id
             ]
         );
     }
 
-    public function listNotRetrieved($userId)
+    public function listNotRetrieved()
     {
         $commandes = Commande::query()->select()
-            ->where('user_id', $userId)
+            ->where('user_id', Auth::id())
             ->whereIn('statut', ['envoye', 'traitement', 'pret'])
             ->get();
         return view('users.liste_non_recupere', ['commandes' => $commandes]);

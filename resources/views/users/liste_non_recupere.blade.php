@@ -17,10 +17,12 @@
         @endif
 
         <tr>
-            <td style="font-weight: bold">{{ $commande->id }}</td>
+            <td style="font-weight: bold;text-align: center">{{ $commande->id }}</td>
             <td>{{ $commande->created_at }}</td>
-            <td style="text-align: center">
-                <a href="{{ route('user_commande', ['id' => $commande->id]) }}">Regarder </a>
+            <td>
+                <a class="bouncy" style="background-color:#f1bb4e"
+                    href="{{ route('user_commande', ['id' => $commande->id]) }}">Regarder
+                </a>
             </td>
         </tr>
 
@@ -29,7 +31,7 @@
         @endif
 
     @empty
-        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez aucun commande </p>
+        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez aucune commande </p>
     @endforelse
 
 @endsection

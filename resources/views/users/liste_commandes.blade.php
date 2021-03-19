@@ -29,9 +29,9 @@
         @endif
 
     @empty
-        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez aucun commande </p>
+        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez aucune commande </p>
     @endforelse
-    <h2><a href="{{ route('commandes_nonRecuperees', ['id' => Auth::id()]) }}">Les commandes non-récupérées</a></h2>
+    <h2><a href="{{ route('commandes_nonRecuperees') }}">Les commandes non-récupérées</a></h2>
 
     <a href="{{ route('back_list') }}">Back to Menu</a>
 
