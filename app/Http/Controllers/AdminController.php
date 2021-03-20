@@ -60,4 +60,8 @@ class AdminController extends Controller
         $request->session()->flash('etat', 'Modification effectuée');
         return redirect()->route('pizzas.index');
     }
+
+    public function deletePizza(){
+        
+    }
 }

@@ -18,10 +18,18 @@ use App\Http\Controllers\UserController;
 |
 */
 
+//login
+Route::get('/login', [AuthenticatedSessionController::class, 'formLogin']);
+Route::post('/login', [AuthenticatedSessionController::class, 'login'])->name('login');
+
+//logout
+Route::get('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
+
 // ajouter une nouvelle pizza
-Route::get('/pizzas/create', [AdminController::class, 'create'])->name('pizzas.create')
+Route::get('/pizzas/create', [AdminController::class, 'create'])
     ->middleware('auth')
-    ->middleware('is_admin');
+    ->middleware('is_admin')
+    ->name('pizzas.create');
 Route::post('/pizza', [AdminController::class, 'store'])->name('pizzas.store');
 
 // la liste des pizzas
@@ -38,13 +46,6 @@ Route::put('/pizzas/{id}', [AdminController::class, 'update'])->name('pizzas.upd
 // Création du compte pour les utilisateurs
 Route::get('/register', [RegisterUserController::class, 'showForm'])->name('register');
 Route::post('/register', [RegisterUserController::class, 'store'])->name('store');
-
-//login
-Route::get('/login', [AuthenticatedSessionController::class, 'formLogin']);
-Route::post('/login', [AuthenticatedSessionController::class, 'login'])->name('login');
-
-//logout
-Route::get('/logout', [AuthenticatedSessionController::class, 'logout'])->name('logout');
 
 // Liste des pizzas (avec pagination)
 Route::get('/pizzas/user', [UserController::class, 'listPizzas'])->name('pizzas.listPizzas')
@@ -116,3 +117,7 @@ Route::get('/user/commandes-non-recuperees', [UserController::class, 'listNotRet
     ->name('commandes_nonRecuperees');
 
 // Supprimer une pizza en utilisant SoftDelete
+Route::get('/admin/{id}/delete/pizza', [AdminController::class, 'deletePizza'])
+    ->middleware('auth')
+    ->middleware('is_admin')
+    ->name('pizza.deletePizza');
