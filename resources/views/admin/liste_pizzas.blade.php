@@ -33,7 +33,11 @@
                     href="{{ route('pizzas.edit', ['id' => $pizza->id]) }}">Modifier
                 </a>
             </td>
-            <td>Supprimer</td>
+            <td>
+                <a class="bouncy" style="background-color:#ff1493"
+                    href="{{ route('pizza.deletePizza', ['id' => $pizza->id]) }}"> Supprimer
+                </a>
+            </td>
         </tr>
 
         @if ($loop->last)
@@ -44,4 +48,7 @@
             Il n'y a aucune pizza, cliquer "Ajouter" pour ajouter une nouvelle pizza
         </p>
     @endforelse
+    <div>
+        {{ $pizzas->links() }}
+    </div>
 @endsection

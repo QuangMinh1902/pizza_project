@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commande;
+use App\Models\CommandePizza;
 use Illuminate\Http\Request;
 
 use App\Models\Pizza;
@@ -33,7 +35,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $pizzas = Pizza::all();
+        $pizzas = Pizza::withoutTrashed()->paginate(4);
         return view('admin.liste_pizzas', ['pizzas' => $pizzas]);
     }
 
@@ -61,7 +63,15 @@ class AdminController extends Controller
         return redirect()->route('pizzas.index');
     }
 
-    public function deletePizza(){
-        
+    public function deletePizza(Request $request, $id)
+    {
+        $nom = Pizza::where(['id' => $id])->first()->nom;
+        $pizza = Pizza::find($id);
+        $commandeId = CommandePizza::where(['pizza_id' => $id])->first()->commande_id;
+        $commande = Commande::find($commandeId);
+        $pizza->commandes()->detach($commande);
+        Pizza::where('id', $id)->forceDelete();
+        $request->session()->flash('etat', 'pizza ' . $nom . ' a été supprimée');
+        return redirect()->back();
     }
 }

@@ -71,13 +71,14 @@ class UserController extends Controller
     public function updateCard(Request $request)
     {
         $request->session()->put('prixTOTAL', 0);
+        $ids = array();
         if ($request->session()->has('ListNom')) {
             $ids = $request->session()->get('ListNom');
             foreach ($ids as $key => $value) {
                 $request->session()->increment('prixTOTAL', ($request->session()->get($value)['prix_total']));
             }
         }
-        $pizzas = Pizza::query()->select()->whereIn('nom', $request->session()->get('ListNom'))->get();
+        $pizzas = Pizza::query()->select()->whereIn('nom', $ids)->get();
         return view('users.shopping_card', ['pizza' => $pizzas]);
     }
 
