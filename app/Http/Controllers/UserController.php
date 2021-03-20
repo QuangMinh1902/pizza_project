@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function listPizzas()
     {
-        $pizzas = Pizza::paginate(5);
+        $pizzas = Pizza::paginate(4);
         return view('users.liste_pizzas', ['pizzas' => $pizzas]);
     }
 
@@ -65,22 +65,19 @@ class UserController extends Controller
         } else {
             $request->session()->put('ListId', [$id]);
         }
-
         return redirect()->back();
     }
 
     public function updateCard(Request $request)
     {
         $request->session()->put('prixTOTAL', 0);
-        $ids = array();
         if ($request->session()->has('ListNom')) {
-            $array = $request->session()->get('ListNom');
-            foreach ($array as $key => $value) {
-                array_push($ids, $value);
+            $ids = $request->session()->get('ListNom');
+            foreach ($ids as $key => $value) {
                 $request->session()->increment('prixTOTAL', ($request->session()->get($value)['prix_total']));
             }
         }
-        $pizzas = Pizza::query()->select()->whereIn('nom', $ids)->get();
+        $pizzas = Pizza::query()->select()->whereIn('nom', $request->session()->get('ListNom'))->get();
         return view('users.shopping_card', ['pizza' => $pizzas]);
     }
 

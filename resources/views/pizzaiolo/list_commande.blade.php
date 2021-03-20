@@ -9,17 +9,15 @@
             <tr>
                 <th>ID</th>
                 <th>STATUT</th>
-                <th>PRIX_TOTAL</th>
                 <th>CREATED_AT</th>
                 <th>DETAIL</th>
                 <th>CHANGER LE STATUT</th>
             </tr>
             @foreach ($commandes as $commande)
                 <tr>
-                    <td>{{ $commande->id }}</td>
+                    <td style="font-weight: bold">{{ $commande->id }}</td>
                     <td>{{ $commande->statut }}</td>
-                    <td>{{ $commande->prix_total }}</td>
-                    <td>{{ $commande->updated_at }}</td>
+                    <td>{{ $commande->created_at }}</td>
                     <td><a href="{{ route('detail_commandes', ['id' => $commande->id]) }}"> Regarder</a> </td>
                     <td>
                         <form action="{{ route('statut', ['id' => $commande->id]) }}">

@@ -29,7 +29,7 @@
             <td>{{ $pizza->updated_at }}</td>
             <td>{{ $pizza->deleted_at }}</td>
             <td>
-                <a class="bouncy" style="background-color:#afeeee"
+                <a class="bouncy" style="background-color:#0000cd"
                     href="{{ route('pizzas.edit', ['id' => $pizza->id]) }}">Modifier
                 </a>
             </td>

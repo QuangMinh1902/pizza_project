@@ -11,16 +11,18 @@
             <table>
                 <tr>
                     <th>ID</th>
+                    <th>STATUT</th>
                     <th>CREATED_AT</th>
                     <th>DETAIL</th>
                 </tr>
         @endif
 
         <tr>
-            <td style="font-weight: bold;text-align: center">{{ $commande->id }}</td>
+            <td style="font-weight: bold">{{ $commande->id }}</td>
+            <td> {{ $commande->statut }}</td>
             <td>{{ $commande->created_at }}</td>
             <td>
-                <a class="bouncy" style="background-color:#f1bb4e"
+                <a class="bouncy" style="background-color:#228B22"
                     href="{{ route('user_commande', ['id' => $commande->id]) }}">Regarder
                 </a>
             </td>
