@@ -8,12 +8,12 @@
         @method('put')
         <p>
             <label for="nom">Nom</label> <br>
-            <input type="text" name="nom" value="{{ $pizza->nom }}">
+            <input type="text" name="nom" value="{{ old('nom') }}">
         </p>
 
         <p>
             <label for="descript">Description</label> <br>
-            <input type="text" name="description" value="{{ $pizza->description }}">
+            <input type="text" name="description" value="{{ old('description') }}">
         </p>
         <p>
             <button type="submit">Modifier</button>
