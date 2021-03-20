@@ -28,7 +28,6 @@
             width: 50%;
             border: 3px solid green;
             padding: 10px;
-            font-weight: bold;
         }
 
         .etat {

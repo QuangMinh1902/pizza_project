@@ -8,7 +8,7 @@
 
     @forelse ($commandes as $commande)
         @if ($loop->first)
-            <table style="margin: auto">
+            <table>
                 <tr>
                     <th>ID</th>
                     <th>CREATED_AT</th>

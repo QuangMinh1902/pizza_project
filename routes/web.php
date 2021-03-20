@@ -114,3 +114,5 @@ Route::get('/detail/{id}/commande', [UserController::class, 'detailOrder'])
 // Liste commandes non-récupérées
 Route::get('/user/commandes-non-recuperees', [UserController::class, 'listNotRetrieved'])
     ->name('commandes_nonRecuperees');
+
+// Supprimer une pizza en utilisant SoftDelete

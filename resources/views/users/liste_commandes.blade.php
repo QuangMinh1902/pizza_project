@@ -8,7 +8,7 @@
 
     @forelse ($commandes as $commande)
         @if ($loop->first)
-            <table style="margin: auto">
+            <table>
                 <tr>
                     <th>ID</th>
                     <th>CREATED_AT</th>
@@ -20,8 +20,8 @@
             <td style="font-weight: bold">{{ $commande->id }}</td>
             <td>{{ $commande->created_at }}</td>
             <td style="text-align: center">
-                <a class="bouncy"  style="background-color:#228B22"
-                href="{{ route('user_commande', ['id' => $commande->id]) }}">Regarder
+                <a class="bouncy" style="background-color:#228B22"
+                    href="{{ route('user_commande', ['id' => $commande->id]) }}">Regarder
                 </a>
             </td>
         </tr>

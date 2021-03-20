@@ -7,7 +7,7 @@
 
     @forelse ($pizzas as $pizza)
         @if ($loop->first)
-            <table style="margin: auto">
+            <table>
                 <tr>
                     <th>Nom de pizza</th>
                     <th>PRIX</th>
