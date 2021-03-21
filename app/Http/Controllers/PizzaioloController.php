@@ -20,8 +20,7 @@ class PizzaioloController extends Controller
     {
         $pizzas = Commande::find($id)->pizzas;
         $user = Commande::find($id)->user->login;
-        $commande = Commande::find($id);
-        return view('pizzaiolo.detail_commande', ['pizzas' => $pizzas, 'user' => $user, 'prix' => $commande->prix_total]);
+        return view('pizzaiolo.detail_commande', ['pizzas' => $pizzas, 'user' => $user]);
     }
 
     public function backList()

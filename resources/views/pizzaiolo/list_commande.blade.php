@@ -18,7 +18,10 @@
                     <td style="font-weight: bold">{{ $commande->id }}</td>
                     <td>{{ $commande->statut }}</td>
                     <td>{{ $commande->created_at }}</td>
-                    <td><a href="{{ route('detail_commandes', ['id' => $commande->id]) }}"> Regarder</a> </td>
+                    <td><a class="bouncy" style="background-color:#228B22"
+                        href="{{ route('detail_commandes', ['id' => $commande->id]) }}"> Regarder
+                    </a>
+                 </td>
                     <td>
                         <form action="{{ route('statut', ['id' => $commande->id]) }}">
                             <label for="statut">Choisir un statut:</label>
