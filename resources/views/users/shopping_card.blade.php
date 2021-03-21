@@ -17,7 +17,7 @@
         @endif
         <tr>
             <td>{{ $p->nom }}</td>
-            <td>{{ $p->prix }}</td>
+            <td>{{ $p->prix }} <strong>$</strong></td>
             <td>
                 <form action="{{ route('cart.update', ['nom' => $p->nom, 'prix' => $p->prix]) }}">
                     <input name="quantity" type="number" value="{{ Session::get($p->nom)['pizza_qty'] }}">
