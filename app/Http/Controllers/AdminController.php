@@ -18,7 +18,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nom' => 'required|string|max:20|unique:pizzas',
+            'nom' => 'required|alpha|max:20|unique:pizzas',
             'description' => 'required|string|max:70|unique:pizzas',
             'prix' => 'required|numeric|between:0,999.99'
         ]);

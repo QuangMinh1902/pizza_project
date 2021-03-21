@@ -23,12 +23,12 @@
 
         @if ($loop->last)
             <tr>
-                <td colspan="3" style="text-align: center;color: #228b22">
+                <td colspan="3" style="color: #228b22;font-weight: bold;font-size: 25px">
                     <strong>Statut : {{ $statut }} </strong>
                 </td>
             </tr>
             <tr>
-                <td colspan="3" style="text-align: center;color: #228b22">
+                <td colspan="3" style="color: #228b22;font-weight: bold;font-size: 25px">
                     <strong>Prix total : {{ $prixTotal }} $ </strong>
                 </td>
             </tr>

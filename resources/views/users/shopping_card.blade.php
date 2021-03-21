@@ -3,7 +3,7 @@
 @section('title', 'Votre Panier')
 
 @section('contents')
-
+    <h1> Panier</h1>
     @forelse ($pizza as $p)
         @if ($loop->first)
             <table>
@@ -25,25 +25,26 @@
                 </form>
             </td>
             <td>{{ Session::get($p->nom)['prix_total'] }}</td>
-            <td><a href="{{ route('delete_from_card', ['nom' => $p->nom, 'id' => $p->id]) }}">Supprimer</a></td>
+            <td><a class="bouncy" style="background-color:#ff1493"
+                    href="{{ route('delete_from_card', ['nom' => $p->nom, 'id' => $p->id]) }}">Supprimer
+                </a>
+            </td>
         </tr>
         @if ($loop->last)
+            <tr>
+                <td colspan="5" style="color: #228b22;font-weight: bold;font-size: 25px">
+                    Le Prix Total : {{ Session::get('prixTOTAL') }} $ <br>
+                    <a style="margin-left:600px;background-color:#daa520" class="bouncy"
+                        href="{{ route('confirm_order') }}">Acheter
+                    </a>
+                </td>
+            </tr>
             </table>
-            <h3>
-                Le Prix Total : {{ Session::get('prixTOTAL') }} $
-            </h3>
         @endif
     @empty
-        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez rien dans le panier </p>
+        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">Panier est vide </p>
     @endforelse
 
 
-    @if (Session::has('ListId'))
-        <h3>
-            <a href="{{ route('confirm_order') }}">Acheter </a>
-        </h3>
-    @endif
-
     <a href="{{ route('back_list') }}">Back to Menu</a>
-
 @endsection

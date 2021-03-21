@@ -8,7 +8,7 @@
         @method('put')
         <p>
             <label for="nom">Nom</label> <br>
-            <input type="text" name="nom" value="{{ old('nom') }}">
+            <input type="text" name="nom" value="{{ old('nom')}}">
         </p>
 
         <p>
