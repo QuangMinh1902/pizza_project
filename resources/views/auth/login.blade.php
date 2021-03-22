@@ -5,19 +5,24 @@
 @section('contents')
     <div class="login">
         <div class="login-header">
-            <h1>Login</h1>
+            <h1>Sign in</h1>
             <form action="{{ route('login') }}" method="post">
                 @csrf
         </div>
         <div class="login-form">
-            <h3>Username:</h3>
-            <input type="text" placeholder="Enter login" name="login"><br>
-            <span style="color: red">@error('login')
+            <h3>Login:</h3>
+            <input type="text" placeholder="Saisir votre login" name="login" value="{{ old('login') }}"><br>
+            <span class="error">@error('login')
                     {{ $message }}
                 @enderror
             </span>
             <h3>Password:</h3>
-            <input type="password" placeholder="Enter Password" name="mdp">
+            <input type="password" placeholder="Saisir votre mot de passe" name="mdp">
+            <span class="error">@error('mdp')
+                    {{ $message }}
+                @enderror
+            </span>
+            <br>
             <br>
             <input type="submit" value="Login">
             <br>

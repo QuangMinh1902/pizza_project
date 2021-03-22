@@ -37,10 +37,7 @@ class AuthenticatedSessionController extends Controller
                 return redirect()->intended('commandes/pizzaiolo');
             }
         }
-
-        return back()->withErrors([
-            'login' => 'The provided credentials do not match our records.',
-        ]);
+        return back()->with('etat', 'Login or password is not correct');
     }
 
     public function logout(Request $request)

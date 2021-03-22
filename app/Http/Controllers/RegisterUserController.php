@@ -17,16 +17,20 @@ class RegisterUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'login' => 'required|string|max:16|unique:users',
-            'mdp' => 'required|string|min:6|max:20|confirmed'
+            'nom' => 'required|alpha|min:4|max:20',
+            'prenom' => 'required|alpha|min:4|max:20',
+            'login' => 'required|alpha|min:4|max:16|unique:users',
+            'mdp' => 'required|alpha|min:4|max:16|confirmed'
         ]);
 
         $user = new User();
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
         $user->login = $request->login;
         $user->mdp = Hash::make($request->mdp);
         $user->save();
 
-        $request->session()->flash('etat', 'User added');
+        $request->session()->flash('etat', 'Votre compte a été créé avec succès');
 
         Auth::login($user);
 

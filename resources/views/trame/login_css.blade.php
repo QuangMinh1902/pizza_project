@@ -5,14 +5,18 @@
     <meta charset="utf-8">
     <title>@yield('title')</title>
     <style>
-        .error {
+        .etat {
+            text-align: center;
+            font-size: 18px;
             color: red;
             font-weight: bold;
+            background-color: #6495ED;
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
-        .etat {
+        .error {
             color: red;
-            font-weight: bold;
         }
 
         body {

@@ -7,7 +7,6 @@
     <style>
         .error {
             color: red;
-            font-weight: bold;
         }
 
         body {
@@ -24,7 +23,7 @@
             position: relative;
             margin: 5% auto;
             width: 400px;
-            height: 400px;
+            height: 520px;
             background: #FFF;
             border-radius: 2px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -102,16 +101,6 @@
 </head>
 
 <body>
-
-    @if ($errors->any())
-        <div class="error">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
     @yield('contents')
 
