@@ -141,6 +141,7 @@ class UserController extends Controller
         $commande->statut = 'envoye';
         $commande->save();
         $commande->pizzas()->attach($pizza);
+        $request->session()->flash('etat', 'Votre commande a été passée, commandeID is : ' . $commande->id);
         $list = $request->session()->get('ListNom');
         foreach ($list as $cle => $valeur) {
             CommandePizza::query()
