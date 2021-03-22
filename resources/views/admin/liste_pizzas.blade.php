@@ -22,7 +22,6 @@
                     <th>PRIX</th>
                     <th>CREATED_AT</th>
                     <th>UPDATED_AT</th>
-                    <th>DELETED_AT</th>
                     <th colspan="2">OPÉRATION</th>
                 </tr>
         @endif
@@ -33,7 +32,6 @@
             <td>{{ $pizza->prix }}</td>
             <td>{{ $pizza->created_at }}</td>
             <td>{{ $pizza->updated_at }}</td>
-            <td>{{ $pizza->deleted_at }}</td>
             <td>
                 <a class="bouncy" style="background-color:#0000cd"
                     href="{{ route('pizzas.edit', ['id' => $pizza->id]) }}">Modifier

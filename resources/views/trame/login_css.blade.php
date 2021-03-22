@@ -106,26 +106,20 @@
             cursor: pointer;
         }
 
+        a:link,
+        a:visited {
+            text-decoration: none;
+        }
+
     </style>
 </head>
 
 <body>
-
     @section('etat')
         @if (session()->has('etat'))
             <p class="etat">{{ session()->get('etat') }}</p>
         @endif
     @show
-
-    @if ($errors->any())
-        <div class="error">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
     @yield('contents')
 
