@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $pizzas = Pizza::withoutTrashed()->paginate(7);
+        $pizzas = Pizza::all();
         return view('admin.liste_pizzas', ['pizzas' => $pizzas]);
     }
 
@@ -67,10 +67,10 @@ class AdminController extends Controller
     {
         $nom = Pizza::where(['id' => $id])->first()->nom;
         $pizza = Pizza::find($id);
-        $commandeId = CommandePizza::where(['pizza_id' => $id])->first()->commande_id;
+        $commandeId = CommandePizza::query()->select('commande_id')->where('pizza_id', $id)->get();
         $commande = Commande::find($commandeId);
         $pizza->commandes()->detach($commande);
-        Pizza::where('id', $id)->forceDelete();
+        Pizza::where('id', $id)->delete();
         $request->session()->flash('etat', 'pizza ' . $nom . ' a été supprimée');
         return redirect()->back();
     }

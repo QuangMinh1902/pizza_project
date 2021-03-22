@@ -35,6 +35,7 @@
             </table>
         @endif
     @empty
+    <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">les pizzas que vous avez achetées a été supprimée </p>
 
     @endforelse
     </table>

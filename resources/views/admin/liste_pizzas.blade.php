@@ -3,8 +3,14 @@
 @section('title', 'Liste des Pizzas')
 
 @section('contents')
+    <ul>
+        <li><a class="active" href="{{route('pizzas.index')}}">Home</a></li>
+        <li><a href={{ 'pizzas/create' }}> Ajouter</a></li>
+        <li style="margin-left: 1075px"> <a href="{{ route('logout') }}">Déconnexion</a>
+        </li>
+    </ul>
+
     <h1>Liste des Pizzas</h1>
-    <h2><a href={{ 'pizzas/create' }}> Ajouter</a></h2>
 
     @forelse ($pizzas as $pizza)
         @if ($loop->first)
@@ -16,6 +22,7 @@
                     <th>PRIX</th>
                     <th>CREATED_AT</th>
                     <th>UPDATED_AT</th>
+                    <th>DELETED_AT</th>
                     <th colspan="2">OPÉRATION</th>
                 </tr>
         @endif
@@ -26,15 +33,21 @@
             <td>{{ $pizza->prix }}</td>
             <td>{{ $pizza->created_at }}</td>
             <td>{{ $pizza->updated_at }}</td>
+            <td>{{ $pizza->deleted_at }}</td>
             <td>
                 <a class="bouncy" style="background-color:#0000cd"
                     href="{{ route('pizzas.edit', ['id' => $pizza->id]) }}">Modifier
                 </a>
             </td>
             <td>
-                <a class="bouncy" style="background-color:#ff1493"
-                    href="{{ route('pizza.deletePizza', ['id' => $pizza->id]) }}"> Supprimer
-                </a>
+                <form action="{{ route('pizza.deletePizza', ['id' => $pizza->id]) }}" method="post"
+                    onsubmit="return confirm('Are you sure ? ')">
+                    @method('delete')
+                    @csrf
+                    <button>
+                        Supprimer
+                    </button>
+                </form>
             </td>
         </tr>
 
@@ -46,7 +59,5 @@
             Il n'y a aucune pizza, cliquer "Ajouter" pour ajouter une nouvelle pizza
         </p>
     @endforelse
-    <div>
-        {{ $pizzas->links() }}
-    </div>
+
 @endsection

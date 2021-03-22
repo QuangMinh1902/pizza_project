@@ -117,7 +117,7 @@ Route::get('/user/commandes-non-recuperees', [UserController::class, 'listNotRet
     ->name('commandes_nonRecuperees');
 
 // Supprimer une pizza en utilisant SoftDelete
-Route::get('/admin/{id}/delete/pizza', [AdminController::class, 'deletePizza'])
+Route::delete('/admin/{id}/delete/pizza', [AdminController::class, 'deletePizza'])
     ->middleware('auth')
     ->middleware('is_admin')
     ->name('pizza.deletePizza');
