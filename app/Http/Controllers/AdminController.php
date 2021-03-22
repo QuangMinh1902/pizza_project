@@ -18,7 +18,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nom' => 'required|alpha|max:20|unique:pizzas',
+            'nom' => 'required|string|max:20|unique:pizzas',
             'description' => 'required|string|max:70|unique:pizzas',
             'prix' => 'required|numeric|between:0,999.99'
         ]);
@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $pizzas = Pizza::withoutTrashed()->paginate(4);
+        $pizzas = Pizza::withoutTrashed()->paginate(7);
         return view('admin.liste_pizzas', ['pizzas' => $pizzas]);
     }
 
