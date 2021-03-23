@@ -35,7 +35,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        $pizzas = Pizza::all();
+        $pizzas = Pizza::orderBy('created_at', 'asc')->get();
         return view('admin.liste_pizzas', ['pizzas' => $pizzas]);
     }
 
@@ -48,9 +48,9 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
-            'nom' => 'required|alpha|max:20',
-            'description' => 'required|string|max:50',
-            'prix' => 'bail|required|integer|gte:0|lte:120',
+            'nom' => 'required|string|min:4|max:30|unique:pizzas',
+            'description' => 'required|string|min:4|max:70|unique:pizzas',
+            'prix' => 'required|numeric|between:0,999.99'
         ]);
 
         Pizza::where('id', $id)->update([
@@ -66,10 +66,10 @@ class AdminController extends Controller
     public function deletePizza(Request $request, $id)
     {
         $nom = Pizza::where(['id' => $id])->first()->nom;
-        $pizza = Pizza::find($id);
-        $commandeId = CommandePizza::query()->select('commande_id')->where('pizza_id', $id)->get();
-        $commande = Commande::find($commandeId);
-        $pizza->commandes()->detach($commande);
+        // $pizza = Pizza::find($id);
+        // $commandeId = CommandePizza::query()->select('commande_id')->where('pizza_id', $id)->get();
+        // $commande = Commande::find($commandeId);
+        // $pizza->commandes()->detach($commande);
         Pizza::where('id', $id)->delete();
         $request->session()->flash('etat', 'pizza ' . $nom . ' a été supprimée');
         return redirect()->back();

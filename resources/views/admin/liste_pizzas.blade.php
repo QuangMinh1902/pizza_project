@@ -29,7 +29,7 @@
             <td style="font-weight: bold">{{ $pizza->id }}</td>
             <td>{{ $pizza->nom }}</td>
             <td>{{ $pizza->description }}</td>
-            <td>{{ $pizza->prix }}</td>
+            <td>{{ $pizza->prix }} <strong> $</strong></td>
             <td>{{ $pizza->created_at }}</td>
             <td>{{ $pizza->updated_at }}</td>
             <td>
