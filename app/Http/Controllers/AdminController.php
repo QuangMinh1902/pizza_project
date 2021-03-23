@@ -66,11 +66,8 @@ class AdminController extends Controller
     public function deletePizza(Request $request, $id)
     {
         $nom = Pizza::where(['id' => $id])->first()->nom;
-        // $pizza = Pizza::find($id);
-        // $commandeId = CommandePizza::query()->select('commande_id')->where('pizza_id', $id)->get();
-        // $commande = Commande::find($commandeId);
-        // $pizza->commandes()->detach($commande);
         Pizza::where('id', $id)->delete();
+        CommandePizza::where('pizza_id', $id)->delete();
         $request->session()->flash('etat', 'pizza ' . $nom . ' a été supprimée');
         return redirect()->back();
     }

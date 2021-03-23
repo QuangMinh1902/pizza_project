@@ -25,7 +25,7 @@
 
         table {
             margin: auto;
-            width: 70%;
+            width: 80%;
             border: 3px solid green;
             padding: 10px;
         }
