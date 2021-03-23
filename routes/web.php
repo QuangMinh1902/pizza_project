@@ -79,7 +79,7 @@ Route::get('/changeQty/{nom}/{prix}', [UserController::class, 'changeQty'])
     ->middleware('auth')
     ->middleware('is_user')
     ->name('cart.update');
-    
+
 // function pour confirmer l'achat
 Route::get('/confirm', [UserController::class, 'confirmOrder'])
     ->middleware('auth')
@@ -88,27 +88,39 @@ Route::get('/confirm', [UserController::class, 'confirmOrder'])
 
 // La liste des commandes non-traitées
 Route::get('/commandes/pizzaiolo', [PizzaioloController::class, 'listCommande'])
-    ->name('list_commandes');
+    ->name('list_commandes')
+    ->middleware('auth')
+    ->middleware('is_cook');
 
 // Le detail du commande
 Route::get('/commandes/{id}/detail', [PizzaioloController::class, 'detailCommande'])
-    ->name('detail_commandes');
+    ->name('detail_commandes')
+    ->middleware('auth')
+    ->middleware('is_cook');
 
 // Changer le statut
 Route::get('/statut/{id}/change', [PizzaioloController::class, 'changeStatut'])
-    ->name('statut');
+    ->name('statut')
+    ->middleware('auth')
+    ->middleware('is_cook');
 
 // liste commandes du user avec {id}
 Route::get('/user/{id}/commandes', [UserController::class, 'listOrder'])
-    ->name('liste_commandes');
+    ->name('liste_commandes')
+    ->middleware('auth')
+    ->middleware('is_user');
 
 // le detail concret du commande
 Route::get('/detail/{id}/commande', [UserController::class, 'detailOrder'])
-    ->name('user_commande');
+    ->name('user_commande')
+    ->middleware('auth')
+    ->middleware('is_user');
 
 // Liste commandes non-récupérées
 Route::get('/user/commandes-non-recuperees', [UserController::class, 'listNotRetrieved'])
-    ->name('commandes_nonRecuperees');
+    ->name('commandes_nonRecuperees')
+    ->middleware('auth')
+    ->middleware('is_user');
 
 // Supprimer une pizza en utilisant SoftDelete
 Route::delete('/admin/{id}/delete/pizza', [AdminController::class, 'deletePizza'])

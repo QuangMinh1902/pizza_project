@@ -36,6 +36,11 @@ class User extends Authenticatable
         return $this->type == 'user';
     }
 
+    public function isCook()
+    {
+        return $this->type == 'cook';
+    }
+
 
     // /**
     //  * The attributes that are mass assignable.
