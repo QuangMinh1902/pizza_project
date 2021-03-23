@@ -52,6 +52,6 @@
             </table>
         @endif
     @empty
-        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">Panier est vide </p>
+        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">Le panier est vide </p>
     @endforelse
 @endsection

@@ -3,13 +3,22 @@
 @section('title', 'Détail de commande')
 
 @section('contents')
+    <ul>
+        <li><a class="active" href="{{ route('pizzas.listPizzas') }}">Home</a></li>
+        <li><a href="{{ route('change_password') }}"> Changer le mot de passe</a></li>
+        <li><a href="{{ route('redirect_card') }}">Panier</a></li>
+        <li><a href="{{ route('liste_commandes', ['id' => Auth::id()]) }}">Vos Commandes </a></li>
+        <li><a href="{{ route('commandes_nonRecuperees') }}">Vos commandes en attente </a></li>
+        <li style="float:right"> <a href="{{ route('logout') }}">Déconnexion</a>
+        </li>
+    </ul>
     <h1>Détail de la commande</h1>
 
     @forelse ($pizzas as $pizza)
         @if ($loop->first)
             <table>
                 <tr>
-                    <th>Nom de pizza</th>
+                    <th>NOM DE LA PIZZA</th>
                     <th>PRIX</th>
                     <th>QUANTITY</th>
                 </tr>
@@ -38,5 +47,4 @@
         <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">les pizzas que vous avez achetées ont été
             supprimées </p>
     @endforelse
-    <a href="{{ route('liste_commandes', ['id' => Auth::id()]) }}"> Revenir</a>
 @endsection

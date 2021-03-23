@@ -3,7 +3,15 @@
 @section('title', 'Vos Commandes')
 
 @section('contents')
-
+    <ul>
+        <li><a class="active" href="{{ route('pizzas.listPizzas') }}">Home</a></li>
+        <li><a href="{{ route('change_password') }}"> Changer le mot de passe</a></li>
+        <li><a href="{{ route('redirect_card') }}">Panier</a></li>
+        <li><a href="{{ route('liste_commandes', ['id' => Auth::id()]) }}">Vos Commandes </a></li>
+        <li><a href="{{ route('commandes_nonRecuperees') }}">Vos commandes en attente </a></li>
+        <li style="float:right"> <a href="{{ route('logout') }}">Déconnexion</a>
+        </li>
+    </ul>
     <h1> Liste de vos commandes non-récupérées</h1>
 
     @forelse ($commandes as $commande)
@@ -33,7 +41,8 @@
         @endif
 
     @empty
-        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">vous n'avez aucune commande </p>
+        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px"> Aucune commande
+        </p>
     @endforelse
 
 @endsection
