@@ -3,6 +3,11 @@
 @section('title', 'Détail de la commande')
 
 @section('contents')
+    <ul>
+        <li><a class="active" href="{{ route('list_commandes') }}">Home</a></li>
+        <li style="float:right"> <a href="{{ route('logout') }}">Déconnexion</a>
+        </li>
+    </ul>
     <h1>Détail de la commande</h1>
     @unless(empty($pizzas))
         <h2 style="text-align: center">
@@ -29,5 +34,4 @@
             </tr>
         </table>
     @endunless
-    <a href="{{ route('list_commandes') }}"> Revenir</a>
 @endsection

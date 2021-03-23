@@ -35,11 +35,6 @@ class PizzaioloController extends Controller
         return view('pizzaiolo.detail_commande', ['pizzas' => $pizzas, 'user' => $user, 'prix' => $prixTotal, 'commande_id' => $id]);
     }
 
-    public function backList()
-    {
-        return redirect()->route('list_commandes');
-    }
-
     public function changeStatut(Request $request, $id)
     {
         $request->validate([

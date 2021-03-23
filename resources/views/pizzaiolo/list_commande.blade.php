@@ -3,6 +3,11 @@
 @section('title', 'Liste des commandes non-traitées')
 
 @section('contents')
+    <ul>
+        <li><a class="active" href="{{ route('list_commandes') }}">Home</a></li>
+        <li style="float:right"> <a href="{{ route('logout') }}">Déconnexion</a>
+        </li>
+    </ul>
     <p style="color: yellowgreen; font-size: 25px;text-align: center">
         Salut <strong>{{ Auth::user()->prenom }}</strong>
         - Votre ID is : {{ Auth::id() }}
