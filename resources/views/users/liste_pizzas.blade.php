@@ -13,7 +13,7 @@
     </ul>
     <p style="color: yellowgreen; font-size: 20px;text-align: center">
         Salut <strong>{{ Auth::user()->prenom }}</strong>
-        - Votre ID is : {{ Auth::id() }}
+        - Votre ID est : {{ Auth::id() }}
     </p>
     <h1>MENU</h1>
     @forelse ($pizzas as $pizza)

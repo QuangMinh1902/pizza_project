@@ -34,6 +34,4 @@
     @endforelse
     <h2><a href="{{ route('commandes_nonRecuperees') }}">Les commandes non-récupérées</a></h2>
 
-    <a href="{{ route('back_list') }}">Back to Menu</a>
-
 @endsection

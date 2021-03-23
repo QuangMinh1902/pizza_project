@@ -35,10 +35,8 @@
             </table>
         @endif
     @empty
-    <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">les pizzas que vous avez achetées a été supprimée </p>
-
+        <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">les pizzas que vous avez achetées ont été
+            supprimées </p>
     @endforelse
-    </table>
-
     <a href="{{ route('liste_commandes', ['id' => Auth::id()]) }}"> Revenir</a>
 @endsection
