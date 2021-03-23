@@ -5,7 +5,7 @@
 @section('contents')
     <ul>
         <li><a class="active" href="{{ route('pizzas.index') }}">Home</a></li>
-        <li style="margin-left: 1150px"> <a href="{{ route('logout') }}">Déconnexion</a>
+        <li style="float:right"> <a href="{{ route('logout') }}">Déconnexion</a>
         </li>
     </ul>
     <h2>Modifier la pizza</h2>

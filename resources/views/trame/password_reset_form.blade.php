@@ -7,16 +7,14 @@
     <style>
         .error {
             color: red;
-            font-weight: bold;
         }
 
         #signup {
             width: 550px;
-            height: 400px;
+            height: 450px;
             margin: 100px auto 50px auto;
             padding: 20px;
             position: relative;
-            background: #fff url(data:image/png;base64,iVBORw0K[...]CYII=);
             border: 1px solid #ccc;
             border-radius: 3px;
         }
@@ -110,8 +108,6 @@
             font: bold 1.4em arial, helvetica;
             text-shadow: 0 -1px 0 rgba(0, 0, 0, .4);
             background-color: #2493ff;
-            background-image: linear-gradient(top, rgba(255, 255, 255, .5), rgba(255, 255, 255, 0));
-            transition: background-color .2s ease-out;
             border-radius: 3px;
             box-shadow: 0 2px 1px rgba(0, 0, 0, .3),
                 0 1px 0 rgba(255, 255, 255, .5) inset;
@@ -129,20 +125,43 @@
             box-shadow: 0 1px 0 rgba(255, 255, 255, .3) inset;
         }
 
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #20b2aa;
+        }
+
+        li {
+            float: left;
+            border-right: 1px solid #bbb;
+        }
+
+        li:last-child {
+            border-right: none;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #ddd;
+        }
+
+        .active:hover {
+            background-color: #6a5acd;
+        }
+
     </style>
 </head>
 
 <body>
-
-    @if ($errors->any())
-        <div class="error">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
 
     @yield('contents')
 

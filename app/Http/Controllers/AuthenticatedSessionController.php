@@ -30,11 +30,11 @@ class AuthenticatedSessionController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if (Auth::user()->type === 'admin') {
-                return redirect()->intended('pizzas');
+                return redirect()->intended('pizzas')->with('etat', 'Connection avec succès');
             } else if (Auth::user()->type === 'user') {
-                return redirect()->intended('pizzas/user');
+                return redirect()->intended('pizzas/user')->with('etat', 'Connection avec succès');
             } else {
-                return redirect()->intended('commandes/pizzaiolo');
+                return redirect()->intended('commandes/pizzaiolo')->with('etat', 'Connection avec succès');
             }
         }
         return back()->with('etat', 'Login or password is not correct');

@@ -27,7 +27,7 @@ class UserController extends Controller
     {
         $request->validate([
             'old_password' => 'required|string',
-            'new_password' => 'required|string|min:6|max:20',
+            'new_password' => 'required|string|min:4|max:16',
             'confirm_password' => 'required|same:new_password'
         ]);
 
@@ -35,10 +35,10 @@ class UserController extends Controller
             User::where('id', Auth::user()->id)->update([
                 'mdp' => Hash::make($request->new_password)
             ]);
-            return redirect()->intended('pizzas/user');
+            return redirect()->intended('pizzas/user')->with('etat', 'Votre mot de passe a été changé avec succès');
         } else {
             return back()->withErrors([
-                'error' => 'Old password does not matched.',
+                'old_password' => 'Old password does not matched.',
             ]);
         }
     }

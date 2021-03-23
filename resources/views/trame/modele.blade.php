@@ -31,13 +31,17 @@
         }
 
         .etat {
+            text-align: center;
+            font-size: 18px;
             color: red;
             font-weight: bold;
+            background-color: #6495ED;
+            padding-top: 5px;
+            padding-bottom: 5px;
         }
 
         .error {
             color: red;
-            font-weight: bold;
         }
 
         h1 {
@@ -122,17 +126,21 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            border: 1px solid #e7e7e7;
-            background-color: #f3f3f3;
+            background-color: #20b2aa;
         }
 
         li {
             float: left;
+            border-right: 1px solid #bbb;
+        }
+
+        li:last-child {
+            border-right: none;
         }
 
         li a {
             display: block;
-            color: #666;
+            color: white;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
@@ -142,9 +150,8 @@
             background-color: #ddd;
         }
 
-        li a.active {
-            color: white;
-            background-color: #008b8b;
+        .active:hover {
+            background-color: #6a5acd;
         }
 
     </style>
