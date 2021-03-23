@@ -19,8 +19,8 @@ class RegisterUserController extends Controller
         $request->validate([
             'nom' => 'required|alpha|min:4|max:20',
             'prenom' => 'required|alpha|min:4|max:20',
-            'login' => 'required|alpha|min:4|max:16|unique:users',
-            'mdp' => 'required|alpha|min:4|max:16|confirmed'
+            'login' => 'required|string|min:4|max:16|unique:users',
+            'mdp' => 'required|string|min:4|max:16|confirmed'
         ]);
 
         $user = new User();
