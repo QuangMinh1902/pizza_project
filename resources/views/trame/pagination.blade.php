@@ -6,30 +6,7 @@
     <title>@yield('title')</title>
 
     <style>
-        table,
-        th,
-        td {
-            border: 1px solid violet;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 5px;
-            text-align: center;
-        }
-
-        th {
-            color: #b22222
-        }
-
-        table {
-            margin: auto;
-            width: 60%;
-            border: 3px solid green;
-            padding: 10px;
-        }
-
+       
         .etat {
             text-align: center;
             font-size: 18px;
@@ -110,13 +87,6 @@
             }
         }
 
-        button {
-            background-color: #ff1493;
-            border-radius: 30px;
-            color: white;
-            font-size: 18px;
-        }
-
         ul {
             list-style-type: none;
             margin: 0;
@@ -151,6 +121,8 @@
         }
 
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 
 <body>

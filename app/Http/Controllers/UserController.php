@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function listPizzas()
     {
-        $pizzas = Pizza::paginate(4);
+        $pizzas = Pizza::orderBy('created_at', 'asc')->paginate(5);
         return view('users.liste_pizzas', ['pizzas' => $pizzas]);
     }
 

@@ -29,7 +29,7 @@ class AdminController extends Controller
         $pizza->prix = $validated['prix'];
         $pizza->save();
 
-        $request->session()->flash('etat', 'Création effectué !');
+        $request->session()->flash('etat', 'La nouvelle pizza a été ajoutée');
         return redirect()->route('pizzas.index');
     }
 
