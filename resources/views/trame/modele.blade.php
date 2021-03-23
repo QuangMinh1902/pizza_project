@@ -35,7 +35,7 @@
             font-size: 18px;
             color: red;
             font-weight: bold;
-            background-color: #6495ED;
+            background-color: #90ee90;
             padding-top: 5px;
             padding-bottom: 5px;
         }

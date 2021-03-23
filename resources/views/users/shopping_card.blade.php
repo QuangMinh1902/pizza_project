@@ -3,11 +3,20 @@
 @section('title', 'Votre Panier')
 
 @section('contents')
+    <ul>
+        <li><a class="active" href="{{ route('pizzas.listPizzas') }}">Home</a></li>
+        <li><a href="{{ route('change_password') }}"> Changer le mot de passe</a></li>
+        <li><a href="{{ route('redirect_card') }}">Panier</a></li>
+        <li><a href="{{ route('liste_commandes', ['id' => Auth::id()]) }}">Vos Commandes </a></li>
+        <li style="float:right"> <a href="{{ route('logout') }}">Déconnexion</a>
+        </li>
+    </ul>
     <h1> Panier</h1>
     @forelse ($pizza as $p)
         @if ($loop->first)
             <table>
                 <tr>
+                    <th>ID</th>
                     <th>NOM</th>
                     <th>PRIX/PRODUIT</th>
                     <th>QUANTITÉ</th>
@@ -16,6 +25,7 @@
                 </tr>
         @endif
         <tr>
+            <td style="font-weight: bold">{{ $p->id }}</td>
             <td>{{ $p->nom }}</td>
             <td>{{ $p->prix }} <strong>$</strong></td>
             <td>
@@ -32,9 +42,9 @@
         </tr>
         @if ($loop->last)
             <tr>
-                <td colspan="5" style="color: #228b22;font-weight: bold;font-size: 25px">
+                <td colspan="6" style="color: #228b22;font-weight: bold;font-size: 25px">
                     Le Prix Total : {{ Session::get('prixTOTAL') }} $ <br>
-                    <a style="margin-left:600px;background-color:#daa520" class="bouncy"
+                    <a style="margin-left:690px;background-color:#daa520" class="bouncy"
                         href="{{ route('confirm_order') }}">Acheter
                     </a>
                 </td>
@@ -44,7 +54,4 @@
     @empty
         <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">Panier est vide </p>
     @endforelse
-
-
-    <a href="{{ route('back_list') }}">Back to Menu</a>
 @endsection

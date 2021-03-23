@@ -79,13 +79,7 @@ Route::get('/changeQty/{nom}/{prix}', [UserController::class, 'changeQty'])
     ->middleware('auth')
     ->middleware('is_user')
     ->name('cart.update');
-
-//revenir Menu des pizzas
-Route::get('/back', [UserController::class, 'backToList'])
-    ->middleware('auth')
-    ->middleware('is_user')
-    ->name('back_list');
-
+    
 // function pour confirmer l'achat
 Route::get('/confirm', [UserController::class, 'confirmOrder'])
     ->middleware('auth')

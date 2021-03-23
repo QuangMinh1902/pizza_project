@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function listPizzas()
     {
-        $pizzas = Pizza::orderBy('created_at', 'asc')->paginate(5);
+        $pizzas = Pizza::orderBy('created_at', 'asc')->paginate(4);
         return view('users.liste_pizzas', ['pizzas' => $pizzas]);
     }
 
@@ -127,11 +127,6 @@ class UserController extends Controller
         return redirect()->action([UserController::class, 'updateCard']);
     }
 
-    public function backToList()
-    {
-        return redirect()->action([UserController::class, 'listPizzas']);
-    }
-
     public function confirmOrder(Request $request)
     {
         $list = $request->session()->get('ListId');
@@ -141,7 +136,7 @@ class UserController extends Controller
         $commande->statut = 'envoye';
         $commande->save();
         $commande->pizzas()->attach($pizza);
-        $request->session()->flash('etat', 'Votre commande a été passée, commandeID is : ' . $commande->id);
+        $request->session()->flash('etat', 'Votre commande a été passée, commandeID : ' . $commande->id);
         $list = $request->session()->get('ListNom');
         foreach ($list as $cle => $valeur) {
             CommandePizza::query()

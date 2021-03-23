@@ -3,6 +3,10 @@
 @section('title', 'Liste des commandes non-traitées')
 
 @section('contents')
+    <p style="color: yellowgreen; font-size: 25px;text-align: center">
+        Salut <strong>{{ Auth::user()->prenom }}</strong>
+        - Votre ID is : {{ Auth::id() }}
+    </p>
     <h1>Liste des commandes non-traitées</h1>
     @unless(empty($commandes))
         <table>
@@ -19,9 +23,9 @@
                     <td>{{ $commande->statut }}</td>
                     <td>{{ $commande->created_at }}</td>
                     <td><a class="bouncy" style="background-color:#228B22"
-                        href="{{ route('detail_commandes', ['id' => $commande->id]) }}"> Regarder
-                    </a>
-                 </td>
+                            href="{{ route('detail_commandes', ['id' => $commande->id]) }}"> Regarder
+                        </a>
+                    </td>
                     <td>
                         <form action="{{ route('statut', ['id' => $commande->id]) }}">
                             <label for="statut">Choisir un statut:</label>

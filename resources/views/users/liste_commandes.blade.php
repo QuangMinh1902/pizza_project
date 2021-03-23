@@ -15,7 +15,6 @@
                     <th>DETAIL</th>
                 </tr>
         @endif
-
         <tr>
             <td style="font-weight: bold">{{ $commande->id }}</td>
             <td>{{ $commande->created_at }}</td>
