@@ -62,7 +62,10 @@ Route::post('/pizzas/user/update-password', [UserController::class, 'updatePassw
 
 // Ajout de pizza dans le panier
 Route::get('/pizzas/{nom}/{id}/{prix}/add-card', [UserController::class, 'addCard'])
-    ->name('add_card');
+    ->name('add_card')
+    ->middleware('auth')
+    ->middleware('is_user');
+
 Route::get('/pizzas/go-card', [UserController::class, 'updateCard'])
     ->middleware('auth')
     ->middleware('is_user')
