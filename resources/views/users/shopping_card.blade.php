@@ -32,6 +32,10 @@
             <td>
                 <form action="{{ route('cart.update', ['nom' => $p->nom, 'prix' => $p->prix]) }}">
                     <input name="quantity" type="number" value="{{ Session::get($p->nom)['pizza_qty'] }}">
+                    <span class="error">@error('quantity')
+                        {{ $message }}
+                    @enderror
+                </span>
                     <input type="submit" value="save">
                 </form>
             </td>

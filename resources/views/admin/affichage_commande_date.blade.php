@@ -31,6 +31,6 @@
             </table>
         @endif
     @empty
-        <p> il n'y a pas</p>
+        <p> Aucune commande</p>
     @endforelse
 @endsection
