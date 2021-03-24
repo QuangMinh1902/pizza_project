@@ -31,6 +31,6 @@
             </table>
         @endif
     @empty
-        <p> Aucune commande</p>
+    <p style="text-align: center; color:red;font-weight: bold;font-size: 20px">Aucune commande </p>
     @endforelse
 @endsection
