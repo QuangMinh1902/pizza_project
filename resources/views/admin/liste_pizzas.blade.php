@@ -6,12 +6,15 @@
     <ul>
         <li><a class="active" href="{{ route('pizzas.index') }}">Home</a></li>
         <li><a href={{ 'pizzas/create' }}> Ajouter</a></li>
+        <li><a href={{ route('chercher.commandes') }}> Chercher les commandes</a></li>
         <li style="float:right"> <a href="{{ route('logout') }}">Déconnexion</a>
         </li>
     </ul>
-
+    <p style="color: yellowgreen; font-size: 25px;text-align: center">
+        Salut <strong>{{ Auth::user()->prenom }}</strong>
+        - Votre ID est : {{ Auth::id() }}
+    </p>
     <h1>Liste des Pizzas</h1>
-
     @forelse ($pizzas as $pizza)
         @if ($loop->first)
             <table>

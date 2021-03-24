@@ -127,3 +127,11 @@ Route::delete('/admin/{id}/delete/pizza', [AdminController::class, 'deletePizza'
     ->middleware('auth')
     ->middleware('is_admin')
     ->name('pizza.deletePizza');
+
+// Afficher la liste des commandes pour une date
+Route::get('/admin/findOrder', [AdminController::class, 'findOrder'])
+    ->name('chercher.commandes')
+    ->middleware('auth')
+    ->middleware('is_admin');
+Route::post('/admin/displayOrder', [AdminController::class, 'displayOrder'])
+    ->name('affichage.commandes');

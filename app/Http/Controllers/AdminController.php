@@ -71,4 +71,21 @@ class AdminController extends Controller
         $request->session()->flash('etat', 'pizza ' . $nom . ' a été supprimée');
         return redirect()->back();
     }
+
+    public function findOrder()
+    {
+        return view('admin.date_form');
+    }
+
+    public function displayOrder(Request $request)
+    {
+        $validated = $request->validate([
+            'date' => 'required|date',
+        ]);
+
+        $commandes = Commande::whereDate('created_at', $validated['date'])
+            ->orWhereDate('updated_at', $validated['date'])
+            ->get();
+        return view('admin.affichage_commande_date', ['commandes' => $commandes]);
+    }
 }
