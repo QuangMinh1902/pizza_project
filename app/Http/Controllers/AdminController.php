@@ -88,4 +88,22 @@ class AdminController extends Controller
             ->get();
         return view('admin.affichage_commande_date', ['commandes' => $commandes]);
     }
+
+    public function watchDetail(Request $request, $id)
+    {
+        $pizzas = Commande::find($id)->pizzas;
+        $user = Commande::find($id)->user->prenom;
+        $commandePizza = CommandePizza::query()
+            ->select('pizza_id', 'qte')
+            ->where('commande_id', $id)
+            ->get();
+        $request->session()->put('prixToTal', 0);
+        foreach ($commandePizza as $c) {
+            $prix = Pizza::where(['id' => $c->pizza_id])->first()->prix;
+            $request->session()->increment('prixToTal', $prix * $c->qte);
+        }
+        $prixTotal = $request->session()->get('prixToTal');
+        $request->session()->forget('prixToTal');
+        return view('admin.detail_commande_date', ['pizzas' => $pizzas, 'user' => $user, 'prix' => $prixTotal, 'commande_id' => $id]);
+    }
 }

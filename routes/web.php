@@ -134,4 +134,12 @@ Route::get('/admin/findOrder', [AdminController::class, 'findOrder'])
     ->middleware('auth')
     ->middleware('is_admin');
 Route::post('/admin/displayOrder', [AdminController::class, 'displayOrder'])
-    ->name('affichage.commandes');
+    ->name('affichage.commandes')
+    ->middleware('auth')
+    ->middleware('is_admin');
+
+// détail des commandes
+Route::get('/admin/{id}/detailCommande', [AdminController::class, 'watchDetail'])
+    ->name('admin.detail.commandes')
+    ->middleware('auth')
+    ->middleware('is_admin');

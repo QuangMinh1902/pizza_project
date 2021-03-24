@@ -20,7 +20,7 @@ class PizzaioloController extends Controller
     public function detailCommande(Request $request, $id)
     {
         $pizzas = Commande::find($id)->pizzas;
-        $user = Commande::find($id)->user->login;
+        $user = Commande::find($id)->user->prenom;
         $commandePizza = CommandePizza::query()
             ->select('pizza_id', 'qte')
             ->where('commande_id', $id)

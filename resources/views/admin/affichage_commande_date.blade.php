@@ -3,23 +3,27 @@
 @section('title', 'Affichage des commandes')
 
 @section('contents')
-<h1>Liste des commandes</h1>
+    <ul>
+        <li><a class="active" href="{{ route('pizzas.index') }}">Home</a></li>
+        <li><a href={{ route('chercher.commandes') }}> Chercher les commandes</a></li>
+        <li style="float:right"> <a href="{{ route('logout') }}">Déconnexion</a>
+        </li>
+    </ul>
+    <h1>Liste des commandes</h1>
     @forelse ($commandes as $commande )
         @if ($loop->first)
             <table>
                 <tr>
                     <th>ID</th>
                     <th>STATUT</th>
-                    <th>CREATED_AT</th>
                     <th>DETAIL</th>
                 </tr>
         @endif
         <tr>
             <td style="font-weight: bold">{{ $commande->id }}</td>
             <td>{{ $commande->statut }}</td>
-            <td>{{ $commande->created_at }}</td>
             <td><a class="bouncy" style="background-color:#228B22"
-                    href="{{ route('detail_commandes', ['id' => $commande->id]) }}"> Regarder
+                    href="{{ route('admin.detail.commandes', ['id' => $commande->id]) }}"> Regarder
                 </a>
             </td>
         </tr>
@@ -27,6 +31,6 @@
             </table>
         @endif
     @empty
-    <p> il n'y a pas</p>
+        <p> il n'y a pas</p>
     @endforelse
 @endsection
