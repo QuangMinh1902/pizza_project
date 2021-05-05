@@ -8,7 +8,7 @@
         <li style="float:right"> <a href="{{ route('logout') }}">Déconnexion</a>
         </li>
     </ul>
-  <h2>Ajouter une pizza</h2>
+  <h2 style="">Ajouter une pizza</h2>
     <form method="post" action="{{ route('pizzas.store') }}">
         @csrf
         <p>
